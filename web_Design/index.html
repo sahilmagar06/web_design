@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Journal | Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Football Journal</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false">Dark mode</button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="magazine.html">Magazine</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container card hero-wrap">
+        <div>
+          <h1>Match-day memories and my love for Manchester United.</h1>
+
+          <p class="lead">
+            Welcome to my football journal. This website documents my experience at
+            <strong>Emirates Stadium on 15 November</strong> and explains why
+            <strong>Manchester United</strong> is my favourite club. I built the site using HTML, CSS,
+            and JavaScript with a focus on clean design, responsive layout for different screen sizes,
+            and accessibility.
+          </p>
+
+          <p>
+            The site has four pages and each page has a clear purpose. The <strong>About</strong> page is mainly
+            text-based to demonstrate typography and readable spacing. The <strong>Gallery</strong> page focuses on
+            image presentation with captions and a responsive grid. The <strong>Magazine</strong> page combines text
+            and images in a mixed layout to create a feature-article style design.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="magazine.html">Read the featured story</a>
+            <a class="btn" href="gallery.html">Open the gallery</a>
+          </div>
+
+          <div class="section">
+            <div class="grid-3">
+              <div class="card feature">
+                <h3>Match-day journal</h3>
+                <p>
+                  A personal write-up from Emirates Stadium, describing the atmosphere, crowd reactions,
+                  and what makes live football feel different.
+                </p>
+              </div>
+              <div class="card feature">
+                <h3>Gallery focus</h3>
+                <p>
+                  Photos organised in a clean grid layout with captions and consistent spacing, designed to
+                  look good on mobile and desktop.
+                </p>
+              </div>
+              <div class="card feature">
+                <h3>Magazine layout</h3>
+                <p>
+                  A mixed layout feature page combining images and text, with a sidebar section that supports
+                  the main story.
+                </p>
+              </div>
+            </div>
+
+            <div class="callout" role="note" aria-label="Project summary">
+              <strong>Project goal:</strong> create a polished football-themed website with clear navigation,
+              consistent layout, accessible structure, and a responsive design that works well across devices.
+            </div>
+          </div>
+
+          <h2>What you’ll find here</h2>
+          <ul>
+            <li>A match-day journal entry from Emirates Stadium (15 November).</li>
+            <li>A section about my favourite club, Manchester United, and why I support them.</li>
+            <li>A gallery page focused on image layout, captions, and styling.</li>
+            <li>A magazine-style feature page combining images and text in one layout.</li>
+          </ul>
+        </div>
+
+        <aside class="hero-side">
+          <div class="card profile">
+             <img class="avatar" src="assets/sahil.jpg" alt="Portrait photo for the website profile" />
+            <div class="meta">
+              <strong>Sahil Magar</strong>
+              <span>Football fan • Journal project</span>
+        	 <strong>Favourite club:</strong> Manchester United
+		<strong>Focus:</strong> Football experiences & web design
+            </div>
+          </div>
+
+          <div class="card quick">
+            <h3>Quick topics</h3>
+            <p>What you’ll find across the pages:</p>
+            <div class="pills" aria-label="Topics">
+              <span class="pill">Emirates Stadium</span>
+              <span class="pill">15 November</span>
+              <span class="pill">Manchester United</span>
+              <span class="pill">Clean design</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container two-col">
+     <div class="card embed">
+  <h2>Emirates Stadium location</h2>
+  <p>
+    This embedded Google Map is included as the required external service feature.
+    It shows the location of Emirates Stadium, which connects to my match-day journal entry.
+  </p>
+
+  <!-- External service embed: Google Maps (used to satisfy the embed requirement). -->
+  <iframe
+    title="Map of Emirates Stadium"
+    src="https://www.google.com/maps?q=Emirates%20Stadium&output=embed"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen>
+  </iframe>
+</div>
+
+        <div class="card embed">
+          <h2>How to use this site</h2>
+          <p>
+            Start with <a href="about.html">About</a> for the story + text styling.
+            Visit <a href="gallery.html">Gallery</a> for images.
+            Open <a href="magazine.html">Magazine</a> for a mixed layout feature page.
+          </p>
+          <div class="callout" role="note" aria-label="Accessibility note">
+            <strong>Accessibility tip:</strong> You can use <kbd>Tab</kbd> to move through links. Focus is visible.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Football Journal • Built with HTML, CSS & JavaScript</p>
+    </div>
+  </footer>
+
+  <script>
+    // Original JS: mobile menu + dark/light mode (no external code).
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Dark/Light toggle with saved preference
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = 'Light mode';
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggleBtn.textContent = 'Dark mode';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

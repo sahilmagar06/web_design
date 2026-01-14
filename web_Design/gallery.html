@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Journal | Gallery</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Football Journal</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false">Dark mode</button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html" aria-current="page">Gallery</a>
+        <a href="magazine.html">Magazine</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container card gallery">
+      <h1>Gallery</h1>
+      <p>
+        This page focuses on image layout and styling. The gallery uses a responsive grid and each image includes
+        a caption to provide context and improve accessibility.
+      </p>
+
+      <div class="gallery-grid" aria-label="Emirates Stadium photo gallery">
+
+        <figure>
+          <img src="assets/emirates1.jpg" alt="Wide view of Emirates Stadium from the seating area" />
+          <figcaption>Emirates Stadium — arriving early and seeing the pitch from the stands.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/emirates2.jpg" alt="Football pitch before kickoff with fans in the background" />
+          <figcaption>Match build-up — the atmosphere grows as kickoff approaches.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/emirates3.jpg" alt="Night-time stadium scene with bright floodlights" />
+          <figcaption>After dark — stadium lights change the mood of the match.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/emirates4.jpg" alt="Crowd inside Emirates Stadium holding flags and scarves" />
+          <figcaption>Supporters in the stands creating noise and energy.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/emirates5.jpg" alt="Players warming up on the pitch before the match" />
+          <figcaption>Warm-up period — final preparations before kickoff.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="assets/emirates6.jpg" alt="View of the stadium seating and pitch during the match" />
+          <figcaption>In-game moment — watching the match from the stands.</figcaption>
+        </figure>
+      </div>
+
+      <div class="callout" role="note" aria-label="Gallery note">
+        <strong>Note:</strong> All images are stored in the <code>assets</code> folder and displayed using a responsive grid layout.
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Football Journal</p>
+    </div>
+  </footer>
+
+  <script>
+    // Original JS: mobile menu + dark/light mode (no external code).
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = 'Light mode';
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggleBtn.textContent = 'Dark mode';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

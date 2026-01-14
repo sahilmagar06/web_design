@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Journal | About</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Football Journal</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false">Dark mode</button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="magazine.html">Magazine</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container card prose">
+      <h1>About me</h1>
+      <p>
+        I’m Sahil Magar, and football is one of my biggest interests. I enjoy the tactics, the emotion,
+        and the atmosphere that only live football can create. This website is a football journal and a web design project
+        where I share a match-day experience and the teams and players I personally support.
+      </p>
+
+      <h2>My favourite club: Manchester United</h2>
+      <p>
+        <strong>Manchester United</strong> is my favourite club because of its history, iconic players, and the identity
+        of fighting until the final whistle. Supporting a club is not only about results — it’s about loyalty, memories,
+        and staying with the team through different seasons.
+      </p>
+
+      <h3>Why I support Manchester United</h3>
+      <ul>
+        <li>The club’s history and tradition</li>
+        <li>The passion of fans around the world</li>
+        <li>Big moments and dramatic matches</li>
+        <li>The belief that comebacks can happen</li>
+      </ul>
+
+      <h3>Favourite Manchester United player: Bruno Fernandes</h3>
+      <p>
+        My favourite Manchester United player is <strong>Bruno Fernandes</strong>. I like him because he plays with
+        leadership and responsibility and often feels like the main player pushing the team forward. He creates chances,
+        scores important goals, and keeps the team organised, which is why many fans feel he is “carrying” the team each season.
+      </p>
+
+      <blockquote>
+        “Supporting a club isn’t just about trophies — it’s about belonging, memories, and identity.”
+      </blockquote>
+
+      <h2>Match-day journal: Brazil vs Senegal (FIFA International Friendly)</h2>
+      <p>
+        On <strong>15 November</strong>, I visited <strong>Emirates Stadium</strong> to watch
+        <strong>Brazil vs Senegal</strong> in a <strong>FIFA International Friendly</strong>.
+        Watching an international match live was a special experience because the atmosphere felt different compared to club football.
+        There were fans from both nations, flags in the stands, and loud reactions to every attacking move.
+      </p>
+      <p>
+        The sound was the first thing I noticed — chants starting in one section and spreading across the stadium.
+        Every pass and tackle felt quicker in real life, and the crowd reacted instantly. What made the night special was the
+        shared emotion: a good attack lifted the noise immediately, while a missed chance created a loud collective groan.
+      </p>
+
+      <h2>Why I support Brazil internationally</h2>
+      <p>
+        At international level, I support <strong>Brazil</strong>. The main reason is <strong>Neymar</strong>, who is my
+        all-time favourite football player. I admire his creativity, confidence, and technical skill. Neymar’s style of play
+        represents what I enjoy most about football — flair, quick decision-making, and the ability to change a match in one moment.
+      </p>
+      <p>
+        Because of Neymar, I became more interested in Brazil and started following their international matches.
+        Seeing Brazil play live at Emirates Stadium felt meaningful to me because I was watching a national team I strongly support.
+      </p>
+
+      <div class="callout" role="note" aria-label="Design note">
+        <strong>Design note:</strong> This page is intentionally text-focused to demonstrate typography, spacing,
+        and readable layout. It uses headings, lists, and quotes for clear structure.
+      </div>
+
+      <h2>Explore the site</h2>
+      <ol>
+        <li><a href="gallery.html">Gallery</a> — images and captions (image styling focus)</li>
+        <li><a href="magazine.html">Magazine</a> — featured story + sidebar (mixed layout)</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Football Journal</p>
+    </div>
+  </footer>
+
+  <script>
+    // Original JS: mobile menu + dark/light mode (no external code).
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = 'Light mode';
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggleBtn.textContent = 'Dark mode';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

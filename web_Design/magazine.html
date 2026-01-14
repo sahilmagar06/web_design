@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Football Journal | Magazine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>Football Journal</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="btn" id="themeToggle" type="button" aria-pressed="false">Dark mode</button>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="magazine.html" aria-current="page">Magazine</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container card mag">
+      <h1>Magazine</h1>
+      <p>
+        This page combines images and text in a magazine-style layout. On larger screens the sidebar sits beside
+        the article, and on smaller screens it stacks underneath for easier reading.
+      </p>
+
+      <div class="mag-layout">
+        <article class="card article">
+          <div class="thumb">
+            <!-- If not your image, cite it here (Unsplash/Pexels + photographer + date accessed). -->
+            <img src="assets/featured.jpg" alt="A football pitch view with stadium seating in the background" />
+          </div>
+
+          <h2>Brazil vs Senegal at Emirates: a night that felt bigger than a friendly</h2>
+
+          <p>
+            On <strong>15 November</strong>, I went to <strong>Emirates Stadium</strong> to watch
+            <strong>Brazil vs Senegal</strong> in a <strong>FIFA International Friendly</strong>.
+            Even though it was “only” a friendly, the atmosphere didn’t feel small at all.
+            From outside the stadium to the moment the teams stepped onto the pitch, it felt like a real football event.
+          </p>
+
+          <p>
+            The first thing I noticed was the sound. Chants started in one section and travelled across the stands.
+            When Brazil moved forward with the ball, you could feel the crowd’s attention change instantly.
+            Watching live football is different because you see the full picture: the positioning, the runs off the ball,
+            and how quickly teams react when possession changes.
+          </p>
+
+          <p>
+            I support <strong>Brazil</strong> internationally, mainly because <strong>Neymar</strong> is my all-time favourite player.
+            Neymar is the kind of player that makes football exciting — creative, confident, and always trying something.
+            Seeing a team you support in a live stadium setting makes the match feel personal, not just entertainment.
+          </p>
+
+          <p>
+            Senegal also made the match intense. Their energy and physical style created real pressure, and it kept the game competitive.
+            The crowd reacted to every big tackle and every quick counter-attack. Moments that look normal on TV feel bigger in real life,
+            because thousands of people react at the same time.
+          </p>
+
+          <p>
+            As a <strong>Manchester United</strong> supporter, nights like this remind me why football matters.
+            Club football is my weekly routine, but international matches have a different feeling — more flags, more mixed supporters,
+            and a stronger “event” atmosphere. My favourite United player is <strong>Bruno Fernandes</strong>,
+            because he takes responsibility and often feels like the player carrying the team every season.
+            That mindset — leadership and effort — is something I respect in football at every level.
+          </p>
+
+          <blockquote>
+            Live football is not only about the final score — it’s about the atmosphere, the tension, and the memory you take home.
+          </blockquote>
+
+          <div class="tags" aria-label="Article tags">
+            <span class="tag">Brazil</span>
+            <span class="tag">Senegal</span>
+            <span class="tag">Emirates Stadium</span>
+            <span class="tag">Neymar</span>
+            <span class="tag">Bruno Fernandes</span>
+          </div>
+        </article>
+
+        <aside class="card sidebar" aria-label="Sidebar">
+          <h3>Quick notes</h3>
+
+          <div class="list">
+            <div class="item">
+              <small>Match</small>
+              <strong>Brazil vs Senegal</strong>
+              <p>FIFA International Friendly • 15 November • Emirates Stadium</p>
+            </div>
+
+            <div class="item">
+              <small>International support</small>
+              <strong>Brazil</strong>
+              <p>I support Brazil mainly because Neymar is my all-time favourite player.</p>
+            </div>
+
+            <div class="item">
+              <small>Favourite club</small>
+              <strong>Manchester United</strong>
+              <p>I support United for the history, identity, and the feeling of never giving up.</p>
+            </div>
+
+            <div class="item">
+              <small>Favourite United player</small>
+              <strong>Bruno Fernandes</strong>
+              <p>Leadership, creativity, and responsibility — he often feels like the main driving force.</p>
+            </div>
+
+            <div class="item">
+              <small>Website focus</small>
+              <strong>Design + accessibility</strong>
+              <p>Clean layout, readable text, responsive design, and dark/light mode.</p>
+            </div>
+          </div>
+
+          <div class="callout" role="note" aria-label="Tip">
+            <strong>Tip:</strong> Use the “Dark mode” button in the header to switch themes. Your choice is saved.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Football Journal</p>
+    </div>
+  </footer>
+
+  <script>
+    // Original JS: mobile menu + dark/light mode (no external code).
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && navLinks.classList.contains('open')) {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = 'Light mode';
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        toggleBtn.textContent = 'Dark mode';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    applyTheme(savedTheme === 'dark' ? 'dark' : 'light');
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      applyTheme(isDark ? 'light' : 'dark');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
